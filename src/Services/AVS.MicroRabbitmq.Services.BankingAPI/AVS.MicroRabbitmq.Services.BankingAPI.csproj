@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\AVS.MicroRabbitmq.Domain.Banking\AVS.MicroRabbitmq.Domain.Banking.csproj" />
+    <ProjectReference Include="..\..\Domain\AVS.MicroRabbitmq.Domain.Core\AVS.MicroRabbitmq.Domain.Core.csproj" />
+    <ProjectReference Include="..\..\Application\AVS.MicroRabbitmq.Application.Banking\AVS.MicroRabbitmq.Application.Banking.csproj" />
+    <ProjectReference Include="..\..\Infra\AVS.MicroRabbitmq.Infra.CrossCutting.IoC\AVS.MicroRabbitmq.Infra.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\..\Infra\AVS.MicroRabbitmq.Infra.CrossCutting.Util\AVS.MicroRabbitmq.Infra.CrossCutting.Util.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+
+</Project>

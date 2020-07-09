@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\AVS.MicroRabbitmq.Infra.Data.SQL.MySQL\AVS.MicroRabbitmq.Infra.Data.SQL.MySQL.csproj" />
+    <ProjectReference Include="..\..\Domain\AVS.MicroRabbitmq.Domain.Banking\AVS.MicroRabbitmq.Domain.Banking.csproj" />
+    <ProjectReference Include="..\..\Domain\AVS.MicroRabbitmq.Domain.Core\AVS.MicroRabbitmq.Domain.Core.csproj" />
+    <ProjectReference Include="..\..\Application\AVS.MicroRabbitmq.Application.Banking\AVS.MicroRabbitmq.Application.Banking.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>
