@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using AVS.MicroRabbitmq.Infra.CrossCutting.IoC;
 
 namespace AVS.MicroRabbitmq.Services.BankingAPI
 {
@@ -25,6 +27,8 @@ namespace AVS.MicroRabbitmq.Services.BankingAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // .NET Native DI Abstraction
+            RegisterServices(services);
             services.AddControllers();
         }
 
@@ -46,6 +50,12 @@ namespace AVS.MicroRabbitmq.Services.BankingAPI
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private static void RegisterServices(IServiceCollection services)
+        {
+            // Adding dependencies from another layers (isolated from WebApi)
+            NativeInjectorBootStrapper.RegisterServices(services);
         }
     }
 }
