@@ -1,6 +1,6 @@
 ﻿# MicroRabbitMQ
-Projeto Demo desenvolvido em dotnet core C#;
-Tecnologias:
+Projeto Demo desenvolvido em dotnet core 3.1 C#;
+- ## Tecnologias: ##
 - Arquitetura em camadas;
 - RabbitMQ;
 - Pomelo.EntityFrameworkCore.MySql;
