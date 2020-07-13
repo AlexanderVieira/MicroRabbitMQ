@@ -11,7 +11,12 @@
         {
             public class RabbitMqDbContext : DbContext
             {
-                public DbSet<Account> Accounts { get; set; }               
+                public DbSet<Account> Accounts { get; set; }  
+
+                public RabbitMqDbContext()
+                {
+                    Database.EnsureCreated();
+                }        
 
                  protected override void OnModelCreating(ModelBuilder modelBuilder)
                 {
@@ -22,6 +27,7 @@
 
                 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
                 {
+                    base.OnConfiguring(optionsBuilder);
                     // get the configuration from the app settings
                     var config = new ConfigurationBuilder()
                         .SetBasePath(Directory.GetCurrentDirectory())

@@ -5,10 +5,13 @@
     <ProjectReference Include="..\..\Domain\AVS.MicroRabbitmq.Domain.Banking\AVS.MicroRabbitmq.Domain.Banking.csproj" />
     <ProjectReference Include="..\..\Domain\AVS.MicroRabbitmq.Domain.Core\AVS.MicroRabbitmq.Domain.Core.csproj" />
     <ProjectReference Include="..\..\Application\AVS.MicroRabbitmq.Application.Banking\AVS.MicroRabbitmq.Application.Banking.csproj" />
+    <ProjectReference Include="..\AVS.MicroRabbitmq.Infra.CrossCutting.Bus\AVS.MicroRabbitmq.Infra.CrossCutting.Bus.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
   </ItemGroup>
 
   <PropertyGroup>

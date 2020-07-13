@@ -8,7 +8,7 @@ using AVS.MicroRabbitmq.Infra.Data.SQL.MySQL.Context;
 
 namespace AVS.MicroRabbitmq.Infra.Data.SQL.MySQL.Repositories
 {
-    public abstract class BaseRepository<TId, T> : IDisposable, IBaseRepository<TId, T> where T : TEntity<TId>
+    public abstract class BaseRepository<TId, T> : IBaseRepository<TId, T> where T : TEntity<TId>
     {
         protected RabbitMqDbContext _ctx; 
 
@@ -45,10 +45,6 @@ namespace AVS.MicroRabbitmq.Infra.Data.SQL.MySQL.Repositories
             _ctx.Set<T>().Update(entity);
             _ctx.SaveChanges();
         }
-
-        public void Dispose()
-        {            
-            GC.SuppressFinalize(this);
-        }        
+           
     }
 }
