@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using AVS.MicroRabbitmq.Infra.CrossCutting.IoC;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 
 namespace AVS.MicroRabbitmq.Services.BankingAPI
 {
@@ -27,6 +29,10 @@ namespace AVS.MicroRabbitmq.Services.BankingAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen(c => 
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo{Title = "Banking Microservice", Version = "v1"});
+            });
             // .NET Native DI Abstraction
             RegisterServices(services);
             services.AddControllers();
@@ -41,6 +47,12 @@ namespace AVS.MicroRabbitmq.Services.BankingAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => 
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Banking Microservice V1");
+            });
 
             app.UseRouting();
 
