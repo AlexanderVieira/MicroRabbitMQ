@@ -3,10 +3,12 @@ using System.Runtime.Serialization;
 using System.Transactions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+//using MediatR.Extensions.Microsoft.DependencyInjection;
 using AVS.MicroRabbitmq.Infra.Data.SQL.MySQL.Context;
 using AVS.MicroRabbitmq.Infra.Data.SQL.MySQL.Repositories;
 using AVS.MicroRabbitmq.Domain.Banking.Interfaces.Repositories;
 using AVS.MicroRabbitmq.Domain.Banking.CommandHandlers;
+using AVS.MicroRabbitmq.Domain.Banking.Commands;
 using AVS.MicroRabbitmq.Domain.Banking.Events;
 using AVS.MicroRabbitmq.Domain.Banking.Models;
 using AVS.MicroRabbitmq.Application.Banking.Interfaces;
@@ -25,10 +27,12 @@ namespace AVS.MicroRabbitmq.Infra.CrossCutting.IoC
             {
                 var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
                 return new RabbitMQBus(sp.GetService<IMediator>(), scopeFactory);
-            });            
+            });  
+
+            services.AddMediatR(typeof(NativeInjectorBootStrapper));          
 
             //Domain Banking Commands
-            //services.AddTransient<IRequestHandler<CreateTransferCommand, bool>, TransferCommandHandler>();
+            services.AddTransient<IRequestHandler<CreateTransferCommand, bool>, TransferCommandHandler>();
 
             // Infra - Data - SQL
             services.AddSingleton<RabbitMqDbContext>();            

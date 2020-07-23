@@ -111,6 +111,7 @@ namespace AVS.MicroRabbitmq.Infra.CrossCutting.Bus
             }
             catch (Exception ex)
             {
+                
             }
         }
 
